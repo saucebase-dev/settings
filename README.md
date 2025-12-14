@@ -9,5 +9,5 @@ To install the Settings module, run the following commands:
 ```bash
 composer require saucebase/settings
 composer dump-autoload
-php artisan module:enable Settings
+docker compose exec workspace php artisan module:enable Settings
 ```
