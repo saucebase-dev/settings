@@ -3,6 +3,8 @@
 namespace Modules\Settings\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Navigation\Services\NavigationRegistry;
+use Spatie\Navigation\Section;
 
 class SettingsServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,41 @@ class SettingsServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'database/migrations'));
+
+        // Register navigation after routes are loaded
+        $this->app->booted(function () {
+            $this->registerNavigation();
+        });
+    }
+
+    /**
+     * Register navigation items.
+     */
+    protected function registerNavigation(): void
+    {
+        $registry = app(NavigationRegistry::class);
+
+        // User menu - Settings
+        $registry->user()
+            ->add('Settings', route('settings.index'), function (Section $section) {
+                $section->attributes([
+                    'label' => 'Settings',
+                    'route' => 'settings.index',
+                    'icon' => 'settings',
+                    'order' => 10,
+                ]);
+            });
+
+        // Settings sidebar - General
+        $registry->settings()
+            ->add('General', route('settings.index'), function (Section $section) {
+                $section->attributes([
+                    'label' => 'General',
+                    'route' => 'settings.index',
+                    'icon' => 'settings-2',
+                    'order' => 0,
+                ]);
+            });
     }
 
     /**
