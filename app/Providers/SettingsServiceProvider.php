@@ -2,8 +2,8 @@
 
 namespace Modules\Settings\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Services\Navigation\NavigationRegistry;
+use Illuminate\Support\ServiceProvider;
 use Spatie\Navigation\Section;
 
 class SettingsServiceProvider extends ServiceProvider
