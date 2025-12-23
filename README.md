@@ -1,4 +1,4 @@
-# Settings Module
+# Settings Module [WIP]
 
 A Laravel module that extends Saucebase core functionality. Designed for seamless integration with the ecosystem.
 
