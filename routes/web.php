@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use Modules\Settings\Http\Controllers\SettingsController;
 
 Route::group(['middleware' => [
@@ -9,11 +8,11 @@ Route::group(['middleware' => [
     'verified',
     'role:admin|user',
 ]], function () {
-    Route::resource('settings', SettingsController::class)->only(['index']);
+    Route::prefix('settings')->group(function () {
+        Route::get('index', [SettingsController::class, 'index'])
+            ->name('settings.index');
 
-    Route::get('settings/profile', function () {
-        return Inertia::render('Settings::Profile', [
-            'title' => 'Profile',
-        ]);
-    })->name('settings.profile');
+        Route::get('profile', [SettingsController::class, 'profile'])
+            ->name('settings.profile');
+    });
 });
