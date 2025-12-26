@@ -57,6 +57,17 @@ class SettingsServiceProvider extends ServiceProvider
                     'order' => 0,
                 ]);
             });
+
+        // Settings menu - Profile
+        $registry->settings()
+            ->add('Profile', route('settings.profile'), function (Section $section) {
+                $section->attributes([
+                    'label' => 'Profile',
+                    'route' => 'settings.profile',
+                    'icon' => 'user-circle',
+                    'order' => 0,
+                ]);
+            });
     }
 
     /**
