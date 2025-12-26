@@ -6,14 +6,17 @@ use Inertia\Inertia;
 
 class SettingsController
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return Inertia::render('Settings::Index', [
-            'message' => 'Welcome to Settings Module',
-            'module' => 'settings',
+            'title' => 'Welcome to Settings Module',
+        ]);
+    }
+
+    public function profile()
+    {
+        return Inertia::render('Settings::Profile', [
+            'title' => 'Welcome to Profile Settings',
         ]);
     }
 }

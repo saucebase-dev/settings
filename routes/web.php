@@ -8,5 +8,11 @@ Route::group(['middleware' => [
     'verified',
     'role:admin|user',
 ]], function () {
-    Route::resource('settings', SettingsController::class);
+    Route::prefix('settings')->group(function () {
+        Route::get('index', [SettingsController::class, 'index'])
+            ->name('settings.index');
+
+        Route::get('profile', [SettingsController::class, 'profile'])
+            ->name('settings.profile');
+    });
 });
