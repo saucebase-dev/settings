@@ -81,7 +81,7 @@ const formatDate = (date: string | null) => {
                                             class="ring-border h-24 w-24 ring-2"
                                         >
                                             <AvatarImage
-                                                :src="user.avatar"
+                                                :src="user.avatar ?? ''"
                                                 :alt="user.name"
                                             />
                                             <AvatarFallback class="text-2xl">
