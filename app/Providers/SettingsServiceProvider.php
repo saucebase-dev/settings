@@ -65,7 +65,7 @@ class SettingsServiceProvider extends ServiceProvider
                     'label' => 'Profile',
                     'route' => 'settings.profile',
                     'icon' => 'user-circle',
-                    'order' => 0,
+                    'order' => 10,
                 ]);
             });
     }
