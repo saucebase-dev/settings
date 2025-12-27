@@ -2,8 +2,8 @@
 
 namespace Modules\Settings\Providers;
 
-use App\Facades\Navigation;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Navigation\Facades\Navigation;
 use Spatie\Navigation\Section;
 
 class SettingsServiceProvider extends ServiceProvider
@@ -56,8 +56,6 @@ class SettingsServiceProvider extends ServiceProvider
         Navigation::add('Profile', route('settings.profile'), function (Section $section) {
             $section->attributes([
                 'group' => 'settings',
-                'label' => 'Profile',
-                'route' => 'settings.profile',
                 'icon' => 'lucide:user-circle',
                 'order' => 20,
             ]);
@@ -67,10 +65,12 @@ class SettingsServiceProvider extends ServiceProvider
         Navigation::add('Settings', route('settings.index'), function (Section $section) {
             $section->attributes([
                 'group' => 'secondary',
-                'label' => 'Settings',
-                'route' => 'settings.index',
                 'icon' => 'lucide:settings',
                 'order' => 10,
+                'badge' => [
+                    'content' => '1',
+                    'variant' => 'destructive',
+                ],
             ]);
         });
     }
