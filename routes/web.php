@@ -9,7 +9,7 @@ Route::group(['middleware' => [
     'role:admin|user',
 ]], function () {
     Route::prefix('settings')->group(function () {
-        Route::get('index', [SettingsController::class, 'index'])
+        Route::get('/', [SettingsController::class, 'index'])
             ->name('settings.index');
 
         Route::get('profile', [SettingsController::class, 'profile'])

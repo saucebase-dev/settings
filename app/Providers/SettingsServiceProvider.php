@@ -2,8 +2,8 @@
 
 namespace Modules\Settings\Providers;
 
-use App\Services\Navigation\NavigationRegistry;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Navigation\Facades\Navigation;
 use Spatie\Navigation\Section;
 
 class SettingsServiceProvider extends ServiceProvider
@@ -34,40 +34,45 @@ class SettingsServiceProvider extends ServiceProvider
      */
     protected function registerNavigation(): void
     {
-        $registry = app(NavigationRegistry::class);
-
         // User menu - Settings
-        $registry->user()
-            ->add('Settings', route('settings.index'), function (Section $section) {
-                $section->attributes([
-                    'label' => 'Settings',
-                    'route' => 'settings.index',
-                    'icon' => 'settings',
-                    'order' => 10,
-                ]);
-            });
+        Navigation::add('Settings', route('settings.index'), function (Section $section) {
+            $section->attributes([
+                'group' => 'user',
+                'icon' => 'lucide:settings',
+                'order' => 10,
+            ]);
+        });
 
         // Settings sidebar - General
-        $registry->settings()
-            ->add('General', route('settings.index'), function (Section $section) {
-                $section->attributes([
-                    'label' => 'General',
-                    'route' => 'settings.index',
-                    'icon' => 'settings-2',
-                    'order' => 0,
-                ]);
-            });
+        Navigation::add('General', route('settings.index'), function (Section $section) {
+            $section->attributes([
+                'group' => 'settings',
+                'icon' => 'lucide:settings-2',
+                'order' => 10,
+            ]);
+        });
 
-        // Settings menu - Profile
-        $registry->settings()
-            ->add('Profile', route('settings.profile'), function (Section $section) {
-                $section->attributes([
-                    'label' => 'Profile',
-                    'route' => 'settings.profile',
-                    'icon' => 'user-circle',
-                    'order' => 10,
-                ]);
-            });
+        // Settings sidebar - Profile
+        Navigation::add('Profile', route('settings.profile'), function (Section $section) {
+            $section->attributes([
+                'group' => 'settings',
+                'icon' => 'lucide:user-circle',
+                'order' => 20,
+            ]);
+        });
+
+        // Secondary navigation - Settings
+        Navigation::add('Settings', route('settings.index'), function (Section $section) {
+            $section->attributes([
+                'group' => 'secondary',
+                'icon' => 'lucide:settings',
+                'order' => 10,
+                'badge' => [
+                    'content' => '1',
+                    'variant' => 'destructive',
+                ],
+            ]);
+        });
     }
 
     /**
