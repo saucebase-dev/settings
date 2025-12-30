@@ -3,8 +3,6 @@
 namespace Modules\Settings\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Spatie\Navigation\Facades\Navigation;
-use Spatie\Navigation\Section;
 
 class SettingsServiceProvider extends ServiceProvider
 {
@@ -22,57 +20,6 @@ class SettingsServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'database/migrations'));
-
-        // Register navigation after routes are loaded
-        $this->app->booted(function () {
-            $this->registerNavigation();
-        });
-    }
-
-    /**
-     * Register navigation items.
-     */
-    protected function registerNavigation(): void
-    {
-        // User menu - Settings
-        Navigation::add('Settings', route('settings.index'), function (Section $section) {
-            $section->attributes([
-                'group' => 'user',
-                'slug' => 'settings',
-                'order' => 10,
-            ]);
-        });
-
-        // Settings sidebar - General
-        Navigation::add('General', route('settings.index'), function (Section $section) {
-            $section->attributes([
-                'group' => 'settings',
-                'slug' => 'settings',
-                'order' => 10,
-            ]);
-        });
-
-        // Settings sidebar - Profile
-        Navigation::add('Profile', route('settings.profile'), function (Section $section) {
-            $section->attributes([
-                'group' => 'settings',
-                'slug' => 'profile',
-                'order' => 20,
-            ]);
-        });
-
-        // Secondary navigation - Settings
-        Navigation::add('Settings', route('settings.index'), function (Section $section) {
-            $section->attributes([
-                'group' => 'secondary',
-                'slug' => 'settings',
-                'order' => 10,
-                'badge' => [
-                    'content' => '1',
-                    'variant' => 'destructive',
-                ],
-            ]);
-        });
     }
 
     /**
