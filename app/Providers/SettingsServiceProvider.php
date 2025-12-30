@@ -38,7 +38,7 @@ class SettingsServiceProvider extends ServiceProvider
         Navigation::add('Settings', route('settings.index'), function (Section $section) {
             $section->attributes([
                 'group' => 'user',
-                'icon' => 'lucide:settings',
+                'slug' => 'settings',
                 'order' => 10,
             ]);
         });
@@ -47,7 +47,7 @@ class SettingsServiceProvider extends ServiceProvider
         Navigation::add('General', route('settings.index'), function (Section $section) {
             $section->attributes([
                 'group' => 'settings',
-                'icon' => 'lucide:settings-2',
+                'slug' => 'settings',
                 'order' => 10,
             ]);
         });
@@ -56,7 +56,7 @@ class SettingsServiceProvider extends ServiceProvider
         Navigation::add('Profile', route('settings.profile'), function (Section $section) {
             $section->attributes([
                 'group' => 'settings',
-                'icon' => 'lucide:user-circle',
+                'slug' => 'profile',
                 'order' => 20,
             ]);
         });
@@ -65,7 +65,7 @@ class SettingsServiceProvider extends ServiceProvider
         Navigation::add('Settings', route('settings.index'), function (Section $section) {
             $section->attributes([
                 'group' => 'secondary',
-                'icon' => 'lucide:settings',
+                'slug' => 'settings',
                 'order' => 10,
                 'badge' => [
                     'content' => '1',
