@@ -12,11 +12,4 @@ class SettingsController
             'title' => 'Welcome to Settings Module',
         ]);
     }
-
-    public function profile()
-    {
-        return Inertia::render('Settings::Profile', [
-            'title' => 'Welcome to Profile Settings',
-        ]);
-    }
 }

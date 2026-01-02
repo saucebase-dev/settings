@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Settings\Http\Controllers\ProfileController;
 use Modules\Settings\Http\Controllers\SettingsController;
 
 Route::group(['middleware' => [
@@ -12,7 +13,19 @@ Route::group(['middleware' => [
         Route::get('/', [SettingsController::class, 'index'])
             ->name('settings.index');
 
-        Route::get('profile', [SettingsController::class, 'profile'])
+        Route::get('profile', [ProfileController::class, 'show'])
             ->name('settings.profile');
+
+        Route::get('profile/edit', [ProfileController::class, 'edit'])
+            ->name('settings.profile.edit');
+
+        Route::patch('profile/info', [ProfileController::class, 'updateInfo'])
+            ->name('settings.profile.update-info');
+
+        Route::post('profile/avatar', [ProfileController::class, 'updateAvatar'])
+            ->name('settings.profile.update-avatar');
+
+        Route::delete('profile/avatar', [ProfileController::class, 'deleteAvatar'])
+            ->name('settings.profile.delete-avatar');
     });
 });
