@@ -252,7 +252,7 @@ const hasSocialiteProviders = computed(() => {
                                             formatLastLogin(
                                                 getConnectedAccount(
                                                     provider.name,
-                                                )!.last_login_at,
+                                                )?.last_login_at ?? '',
                                             )
                                         }}
                                     </p>
