@@ -70,6 +70,7 @@ class ProfileController
         $user = auth()->user();
 
         if ($request->hasFile('avatar')) {
+            $user->clearMediaCollection('avatars');
             $user->addMediaFromRequest('avatar')
                 ->toMediaCollection('avatars');
         }
