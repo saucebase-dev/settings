@@ -16,8 +16,18 @@ class ProfileController
      */
     public function show(): Response
     {
+        $user = auth()->user();
+
         return Inertia::render('Settings::Profile', [
-            'title' => 'Welcome to Profile Settings',
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'avatar' => $user->avatar,
+                'last_login_at' => $user->last_login_at,
+                'social_accounts' => $user->connected_providers,
+            ],
+            'available_providers' => config('services.providers', []),
         ]);
     }
 
@@ -35,6 +45,7 @@ class ProfileController
                 'email' => $user->email,
                 'avatar' => $user->avatar,
                 'has_uploaded_avatar' => $user->hasMedia('avatars'),
+                'has_password' => ! empty($user->password),
             ],
         ]);
     }

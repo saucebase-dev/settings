@@ -1,31 +1,37 @@
 <script setup lang="ts">
-import { Avatar,AvatarFallback,AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+
 import {
-Card,
-CardContent,
-CardDescription,
-CardHeader,
-CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from '@/components/ui/card';
+
 import {
-Dialog,
-DialogContent,
-DialogDescription,
-DialogFooter,
-DialogHeader,
-DialogTitle,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
 } from '@/components/ui/dialog';
+
 import type { User } from '@/types';
-import { Form,router,usePage } from '@inertiajs/vue3';
+import { Form, router, usePage } from '@inertiajs/vue3';
 import InputField from '@modules/Auth/resources/js/components/InputField.vue';
-import { Camera,Loader2,Trash2 } from 'lucide-vue-next';
-import { computed,ref } from 'vue';
+import { Camera, Loader2, Trash2 } from 'lucide-vue-next';
+import { computed, ref } from 'vue';
 
 import SettingsLayout from '../../layouts/SettingsLayout.vue';
 
 const props = defineProps<{
-    user: User & { has_uploaded_avatar?: boolean };
+    user: User & {
+        has_uploaded_avatar?: boolean;
+        has_password?: boolean;
+    };
 }>();
 
 const page = usePage();
