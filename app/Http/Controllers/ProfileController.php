@@ -27,7 +27,7 @@ class ProfileController
                 'last_login_at' => $user->last_login_at,
                 'social_accounts' => $user->connected_providers,
             ],
-            'available_providers' => config('services.providers', []),
+            'available_providers' => config('services.socialite_providers', []),
         ]);
     }
 
