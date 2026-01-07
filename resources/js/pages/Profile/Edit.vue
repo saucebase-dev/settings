@@ -20,9 +20,9 @@ import {
 } from '@/components/ui/dialog';
 
 import type { User } from '@/types';
-import { Form, router, usePage } from '@inertiajs/vue3';
+import { Form, Link, router, usePage } from '@inertiajs/vue3';
 import InputField from '@modules/Auth/resources/js/components/InputField.vue';
-import { Camera, Loader2, Trash2 } from 'lucide-vue-next';
+import { ArrowLeft, Camera, Loader2, Trash2 } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 
 import SettingsLayout from '../../layouts/SettingsLayout.vue';
@@ -132,21 +132,16 @@ const userInitials = computed(() => {
     <SettingsLayout :title="$t('Edit Profile')">
         <template #header>
             <h1 class="text-2xl font-bold">
+                <Link :href="route('settings.profile')">
+                    <ArrowLeft
+                        class="hover:text-primary-foreground mr-2 mb-1 inline size-6"
+                    />
+                </Link>
                 {{ $t('Edit Profile') }}
             </h1>
         </template>
 
-        <!-- Flash Message -->
-        <div
-            v-if="page.props.status"
-            class="rounded-md border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900/20"
-        >
-            <p class="text-sm text-green-800 dark:text-green-200">
-                {{ page.props.status }}
-            </p>
-        </div>
-
-        <Card>
+        <Card class="max-w-3xl">
             <CardHeader>
                 <CardTitle>{{ $t('Profile Information') }}</CardTitle>
                 <CardDescription>
