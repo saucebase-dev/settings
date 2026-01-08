@@ -20,11 +20,12 @@ import {
 } from '@/components/ui/dialog';
 
 import type { User } from '@/types';
-import { Form, Link, router, usePage } from '@inertiajs/vue3';
+import { Form, router, usePage } from '@inertiajs/vue3';
 import InputField from '@modules/Auth/resources/js/components/InputField.vue';
-import { ArrowLeft, Camera, Loader2, Trash2 } from 'lucide-vue-next';
+import { Camera, Loader2, Trash2 } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 
+import PageHeader from '../../components/PageHeader.vue';
 import SettingsLayout from '../../layouts/SettingsLayout.vue';
 
 const props = defineProps<{
@@ -131,14 +132,10 @@ const userInitials = computed(() => {
 <template>
     <SettingsLayout :title="$t('Edit Profile')">
         <template #header>
-            <h1 class="text-2xl font-bold">
-                <Link :href="route('settings.profile')">
-                    <ArrowLeft
-                        class="hover:text-primary-foreground mr-2 mb-1 inline size-6"
-                    />
-                </Link>
-                {{ $t('Edit Profile') }}
-            </h1>
+            <PageHeader
+                :title="$t('Edit Profile')"
+                :back-url="route('settings.profile')"
+            />
         </template>
 
         <Card class="max-w-3xl">

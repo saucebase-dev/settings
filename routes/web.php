@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Settings\Http\Controllers\PasswordController;
 use Modules\Settings\Http\Controllers\ProfileController;
 use Modules\Settings\Http\Controllers\SettingsController;
 
@@ -27,5 +28,11 @@ Route::group(['middleware' => [
 
         Route::delete('profile/avatar', [ProfileController::class, 'deleteAvatar'])
             ->name('settings.profile.delete-avatar');
+
+        Route::get('profile/password', [PasswordController::class, 'edit'])
+            ->name('settings.profile.password.edit');
+
+        Route::put('profile/password', [PasswordController::class, 'update'])
+            ->name('settings.profile.password.update');
     });
 });
