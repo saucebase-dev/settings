@@ -19,6 +19,8 @@ import type { User } from '@/types';
 import { Link, router } from '@inertiajs/vue3';
 import { Loader2 } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
+import IconGithub from '~icons/simple-icons/github';
+import IconGoogle from '~icons/simple-icons/google';
 import SettingsLayout from '../layouts/SettingsLayout.vue';
 
 const title = 'Profile';
@@ -110,6 +112,15 @@ const confirmDisconnect = () => {
     });
 };
 
+const providerIcons: Record<string, any> = {
+    google: IconGoogle,
+    github: IconGithub,
+};
+
+const getProviderIcon = (providerName: string) => {
+    return providerIcons[providerName.toLowerCase()];
+};
+
 const hasSocialiteProviders = computed(() => {
     return (
         route().has('auth.socialite.redirect') &&
@@ -120,13 +131,9 @@ const hasSocialiteProviders = computed(() => {
 </script>
 <template>
     <SettingsLayout :title="title">
-        <template #header>
-            <h1 class="text-2xl font-bold">{{ $t(title) }}</h1>
-        </template>
-
         <div class="grid gap-6">
             <!-- Profile Overview Card -->
-            <Card>
+            <Card class="max-w-3xl">
                 <CardHeader>
                     <CardTitle>{{ $t('Profile Information') }}</CardTitle>
                     <CardDescription>
@@ -152,7 +159,7 @@ const hasSocialiteProviders = computed(() => {
 
                         <!-- User Details -->
                         <div class="flex-1 space-y-4">
-                            <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="grid gap-4">
                                 <div>
                                     <div
                                         class="text-muted-foreground text-sm font-medium"
@@ -194,9 +201,15 @@ const hasSocialiteProviders = computed(() => {
                                         {{ $t('Edit Profile') }}
                                     </Button>
                                 </Link>
-                                <Button variant="outline">
-                                    {{ $t('Change Password') }}
-                                </Button>
+                                <Link
+                                    :href="
+                                        route('settings.profile.password.edit')
+                                    "
+                                >
+                                    <Button variant="outline">
+                                        {{ $t('Change Password') }}
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -204,7 +217,7 @@ const hasSocialiteProviders = computed(() => {
             </Card>
 
             <!-- Connected Social Accounts -->
-            <Card v-if="hasSocialiteProviders">
+            <Card v-if="hasSocialiteProviders" class="max-w-3xl">
                 <CardHeader>
                     <CardTitle>{{ $t('Connected Accounts') }}</CardTitle>
                     <CardDescription>
@@ -219,22 +232,17 @@ const hasSocialiteProviders = computed(() => {
                             class="flex items-center justify-between rounded-lg border p-4"
                         >
                             <div class="flex items-center gap-4">
-                                <!-- Provider Avatar (if connected and has avatar) -->
-                                <Avatar
-                                    v-if="isProviderConnected(provider.name)"
-                                    class="size-10"
-                                >
-                                    <AvatarImage
-                                        :src="
-                                            getConnectedAccount(provider.name)
-                                                ?.provider_avatar_url ?? ''
-                                        "
-                                        :alt="provider.label"
-                                    />
-                                    <AvatarFallback class="text-sm">
-                                        {{ provider.label.charAt(0) }}
-                                    </AvatarFallback>
-                                </Avatar>
+                                <!-- Provider Icon -->
+                                <component
+                                    v-if="getProviderIcon(provider.name)"
+                                    :is="getProviderIcon(provider.name)"
+                                    class="size-6"
+                                    :class="{
+                                        'opacity-50': !isProviderConnected(
+                                            provider.name,
+                                        ),
+                                    }"
+                                />
 
                                 <!-- Provider Name -->
                                 <div>
