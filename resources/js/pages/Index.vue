@@ -7,7 +7,9 @@ const title = 'Settings';
 <template>
     <SettingsLayout :title="title">
         <template #header>
-            <h1 class="text-2xl font-bold">General Settings</h1>
+            <h1 class="mt-2 text-2xl font-bold">
+                {{ $t('General Settings') }}
+            </h1>
         </template>
 
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">

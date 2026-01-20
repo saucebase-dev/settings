@@ -25,6 +25,7 @@ import InputField from '@/components/ui/input/InputField.vue';
 import { Camera, Loader2, Trash2 } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 
+import PageHeader from '../../components/PageHeader.vue';
 import SettingsLayout from '../../layouts/SettingsLayout.vue';
 
 const props = defineProps<{
@@ -131,22 +132,13 @@ const userInitials = computed(() => {
 <template>
     <SettingsLayout :title="$t('Edit Profile')">
         <template #header>
-            <h1 class="text-2xl font-bold">
-                {{ $t('Edit Profile') }}
-            </h1>
+            <PageHeader
+                :title="$t('Edit Profile')"
+                :back-url="route('settings.profile')"
+            />
         </template>
 
-        <!-- Flash Message -->
-        <div
-            v-if="page.props.status"
-            class="rounded-md border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900/20"
-        >
-            <p class="text-sm text-green-800 dark:text-green-200">
-                {{ page.props.status }}
-            </p>
-        </div>
-
-        <Card>
+        <Card class="max-w-3xl">
             <CardHeader>
                 <CardTitle>{{ $t('Profile Information') }}</CardTitle>
                 <CardDescription>
