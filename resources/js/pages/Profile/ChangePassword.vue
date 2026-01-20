@@ -8,7 +8,7 @@ import {
     CardTitle,
 } from '@/components/ui/card';
 import { Form, Link } from '@inertiajs/vue3';
-import InputField from '@modules/Auth/resources/js/components/InputField.vue';
+import InputField from '@/components/ui/input/InputField.vue';
 import PageHeader from '../../components/PageHeader.vue';
 import SettingsLayout from '../../layouts/SettingsLayout.vue';
 </script>
