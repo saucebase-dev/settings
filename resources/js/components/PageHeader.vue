@@ -12,7 +12,7 @@ defineProps<{
     <h1 class="text-2xl font-bold mt-2">
         <Link v-if="backUrl" :href="backUrl">
             <ArrowLeft
-                class="hover:text-primary-foreground inline size-6 mr-2 mb-1"
+                class="inline size-6 mr-2 mb-1"
             />
         </Link>
         {{ title }}

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import SettingsMobileMenu from '@/components/Navigation/SettingsMobileMenu.vue';
-import SettingsSidebar from '@/components/Navigation/SettingsSidebar.vue';
+import SettingsMobileMenu from '../components/SettingsMobileMenu.vue';
+import SettingsSidebar from '../components/SettingsSidebar.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
 
