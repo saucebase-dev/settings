@@ -4,7 +4,9 @@ namespace Modules\Settings\Filament;
 
 use App\Filament\ModulePlugin;
 use Filament\Contracts\Plugin;
+use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
+use Filament\Support\Icons\Heroicon;
 
 class SettingsPlugin implements Plugin
 {
@@ -22,6 +24,11 @@ class SettingsPlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
-        //
+        $panel->navigationGroups([
+            NavigationGroup::make()
+                ->label(__('settings::filament.navigation.group'))
+                ->icon(Heroicon::OutlinedCog6Tooth)
+                ->collapsible(),
+        ]);
     }
 }
