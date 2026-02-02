@@ -7,7 +7,7 @@ const title = 'Settings';
 <template>
     <SettingsLayout :title="title">
         <template #header>
-            <h1 class="mt-2 text-2xl font-bold">
+            <h1 class="text-2xl font-bold">
                 {{ $t('General Settings') }}
             </h1>
         </template>
