@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import SettingsMobileMenu from '../components/SettingsMobileMenu.vue';
-import SettingsSidebar from '../components/SettingsSidebar.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import SettingsMobileMenu from '../components/SettingsMobileMenu.vue';
+import SettingsSidebar from '../components/SettingsSidebar.vue';
 
 defineProps<{
     title: string;

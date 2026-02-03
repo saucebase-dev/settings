@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button';
+import { NavGroup } from '@/components/ui/navigation';
 import {
     Sheet,
     SheetContent,
@@ -13,7 +14,6 @@ import type { Navigation } from '@/types/navigation';
 import { usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import IconMenu from '~icons/lucide/menu';
-import { NavGroup } from '@/components/ui/navigation';
 
 const page = usePage<PageProps<{ navigation: Navigation }>>();
 const { isMobile } = useSidebar();
@@ -29,7 +29,7 @@ const items = computed(() => page.props.navigation?.settings || []);
             <Button
                 variant="outline"
                 size="icon"
-                class="lg:hidden align-middle mr-3"
+                class="mr-3 align-middle lg:hidden"
                 aria-label="Open settings menu"
             >
                 <IconMenu class="size-5" />
