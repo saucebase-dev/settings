@@ -10,7 +10,7 @@ import {
 import InputField from '@/components/ui/input/InputField.vue';
 import { Form, Link } from '@inertiajs/vue3';
 import PageHeader from '../../components/PageHeader.vue';
-import SettingsLayout from '../../layouts/SettingsLayout.vue';
+import SettingsLayout from '@/layouts/SettingsLayout.vue';
 </script>
 
 <template>

@@ -10,8 +10,8 @@ User profile management, avatar uploads, password changes, and application setti
 | Requests | `UpdateProfileInfoRequest` (name, email), `UpdateProfileAvatarRequest` (image, max 2MB), `UpdatePasswordRequest` (current_password, confirmed new) |
 | Filament | `SettingsPlugin` (nav group), `GeneralSettings` page (placeholder) |
 | Pages | `Index`, `Profile`, `Profile/Edit`, `Profile/ChangePassword` |
-| Layout | `SettingsLayout` — wraps all settings pages with responsive sidebar/sheet |
-| Components | `SettingsSidebar` (desktop, w-56), `SettingsMobileMenu` (mobile sheet, w-64), `PageHeader` |
+| Layout | Uses core `@/layouts/SettingsLayout.vue` (shared infrastructure for all settings pages) |
+| Components | `PageHeader` (module-specific) |
 
 **No models or migrations** — this module operates on the core `User` model.
 
@@ -41,11 +41,7 @@ Uses Spatie Media Library with a single-file `avatars` collection on the User mo
 Upload clears old collection before adding new: `clearMediaCollection('avatars')` then `addMediaFromRequest('avatar')->toMediaCollection('avatars')`.
 
 ### Responsive Layout
-`SettingsLayout` conditionally renders:
-- **Desktop**: `SettingsSidebar` (always visible, non-collapsible) + content area
-- **Mobile**: `SettingsMobileMenu` (Sheet component, triggered by menu icon)
-
-Detection via `useSidebar().isMobile`.
+Settings pages use the core `SettingsLayout` from `@/layouts/SettingsLayout.vue`. This is shared infrastructure — any module can use it for its own settings pages (see core CLAUDE.md for the pattern).
 
 ### Social Account Display
 Profile page shows connected providers with connect/disconnect buttons. Delegates entirely to Auth module:
@@ -62,7 +58,7 @@ Configured in `routes/navigation.php` via Spatie Navigation. Three groups:
 - `settings` — "General" (10) and "Profile" (20) in sidebar
 - `secondary` — "Settings" with destructive badge
 
-Frontend reads from `page.props.navigation?.settings`.
+Other modules can add items to the `settings` group from their own `routes/navigation.php`. Frontend reads from `page.props.navigation?.settings`.
 
 ## Testing
 
