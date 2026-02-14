@@ -47,7 +47,7 @@ Settings pages use the core `SettingsLayout` from `@/layouts/SettingsLayout.vue`
 Profile page shows connected providers with connect/disconnect buttons. Delegates entirely to Auth module:
 - Connect: links to `route('auth.socialite.redirect', provider.name)`
 - Disconnect: DELETE to `route('auth.socialite.disconnect', provider)`
-- Data: `$user->connected_providers` from Auth module's `useSocialite` trait
+- Data: `$user->connected_providers` from Auth module's `Sociable` trait
 
 ### Password Change
 `PasswordController::update()` hashes new password, saves, sends `PasswordChangedNotification` (mail channel with timestamp and profile link), then redirects with toast.
@@ -71,7 +71,7 @@ E2E tests in `tests/e2e/index.spec.ts` — basic settings page accessibility.
 
 ## Gotchas
 
-- No own models — depends on core `User` model and Auth module's `useSocialite` trait
+- No own models — depends on core `User` model and Auth module's `Sociable` trait
 - Social connect/disconnect routes belong to the Auth module, not Settings
 - Avatar deletion only removes the Media Library upload — social avatar URL remains as fallback
 - All routes require `verified` middleware — unverified users can't access settings
