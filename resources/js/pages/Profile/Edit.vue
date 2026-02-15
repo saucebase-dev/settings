@@ -19,14 +19,14 @@ import {
     DialogTitle,
 } from '@/components/ui/dialog';
 
+import InputField from '@/components/ui/input/InputField.vue';
 import type { User } from '@/types';
 import { Form, router, usePage } from '@inertiajs/vue3';
-import InputField from '@/components/ui/input/InputField.vue';
 import { Camera, Loader2, Trash2 } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 
 import PageHeader from '../../components/PageHeader.vue';
-import SettingsLayout from '../../layouts/SettingsLayout.vue';
+import SettingsLayout from '@/layouts/SettingsLayout.vue';
 
 const props = defineProps<{
     user: User & {

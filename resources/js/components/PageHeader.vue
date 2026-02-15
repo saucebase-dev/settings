@@ -9,11 +9,9 @@ defineProps<{
 </script>
 
 <template>
-    <h1 class="text-2xl font-bold mt-2">
+    <h1 class="mt-2 text-2xl font-bold">
         <Link v-if="backUrl" :href="backUrl">
-            <ArrowLeft
-                class="inline size-6 mr-2 mb-1"
-            />
+            <ArrowLeft class="mr-2 mb-1 inline size-6" />
         </Link>
         {{ title }}
     </h1>

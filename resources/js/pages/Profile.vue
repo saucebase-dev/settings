@@ -26,7 +26,7 @@ import { Loader2 } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 import IconGithub from '~icons/simple-icons/github';
 import IconGoogle from '~icons/simple-icons/google';
-import SettingsLayout from '../layouts/SettingsLayout.vue';
+import SettingsLayout from '@/layouts/SettingsLayout.vue';
 
 const title = 'Profile';
 
