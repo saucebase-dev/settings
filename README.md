@@ -1,13 +1,5 @@
 # Settings Module
 
-A Laravel module that extends Saucebase core functionality. Designed for seamless integration with the ecosystem.
+User profile management, avatar uploads, password changes, and social provider connect/disconnect for Saucebase.
 
-## Installation
-
-To install the Settings module, run the following commands:
-
-```bash
-composer require saucebase/settings
-composer dump-autoload
-docker compose exec workspace php artisan module:enable Settings
-```
+**[Documentation →](https://sauce-base.github.io/docs/modules/settings)**
