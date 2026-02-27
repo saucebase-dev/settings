@@ -1,0 +1,16 @@
+name: Settings Module Tests
+
+on:
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
+
+permissions:
+    contents: read
+
+jobs:
+    test:
+        uses: sauce-base/saucebase/.github/workflows/test-module.yml@main
+        with:
+            module: Settings
