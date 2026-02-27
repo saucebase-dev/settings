@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@e2e/fixtures/index.ts';
 
 test.describe('Settings index page', () => {
     test('responds successfully when navigating to root', async ({ page }) => {
