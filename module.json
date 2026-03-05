@@ -2,7 +2,7 @@
   "name": "Settings",
   "alias": "settings",
   "description": "Settings module",
-  "author": "Sauce Base",
+  "author": "Saucebase",
   "version": "v0.0.12",
   "keywords": [
     "settings"
