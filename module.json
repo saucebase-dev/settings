@@ -3,7 +3,7 @@
   "alias": "settings",
   "description": "Settings module",
   "author": "Saucebase",
-  "version": "v0.0.12",
+  "version": "v0.0.16",
   "keywords": [
     "settings"
   ],
