@@ -63,7 +63,7 @@ Other modules can add items to the `settings` group from their own `routes/navig
 ## Testing
 
 ```bash
-php artisan test --testsuite=Modules --filter='Modules.Settings'  # PHPUnit
+php artisan test --testsuite=Modules --filter='^Modules\\Settings\\Tests'  # PHPUnit
 npx playwright test --project="@Settings*"                 # E2E
 ```
 
