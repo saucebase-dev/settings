@@ -22,6 +22,11 @@ class SettingsPlugin implements Plugin
         return 'settings';
     }
 
+    public static function getNavigationGroupSort(): int
+    {
+        return 3;
+    }
+
     public function boot(Panel $panel): void
     {
         $panel->navigationGroups([
